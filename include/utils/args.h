@@ -3,9 +3,16 @@
 #include <utils/arena.h>
 #include <stdint.h>
 
-struct Args {
+enum ArgsResolveStatus
+{
+  ARGS_RESOLVE_SUCCESS,
+  ARGS_RESOLVE_ERROR
+};
+
+struct Args
+{
   char *expression;
   uint8_t format_float;
 };
 
-struct Args resolve_args(int argc, char *argv[], struct Arena *arena);
+enum ArgsResolveStatus resolve_args(struct Args *args, struct Arena *arena, int argc, char *argv[]);
